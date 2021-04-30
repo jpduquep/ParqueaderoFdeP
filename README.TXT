@@ -1,12 +1,4 @@
-------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all he/she needs to know. The comments should usually include at least:
-------------------------------------------------------------------------
-
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PROJECT TITLE: Parqueadero
+PURPOSE OF PROJECT: Trabajo de Fundamentos de Programacion
+VERSION or DATE: 30 Abril del 2021
+AUTHORS: Juan Pablo Duque Palencia & Juan Pablo Restrepo Restrepo
