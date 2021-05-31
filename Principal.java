@@ -1,7 +1,9 @@
 import java.util.Scanner;
 import java.util.Date;
+import java.io.*;
+
 public class Principal{
-    public static void main(String[]args){
+    public static void main(String[]args) throws java.io.IOException {
         Scanner scan = new Scanner(System.in);
     
         //Declarando tamaño del parqueadero
@@ -181,7 +183,13 @@ public class Principal{
                     }
                     break;
                 case 11:
-                    
+                    try{
+                        Vehiculo.exportarTXT();
+                    }
+                    catch(FileNotFoundException e){
+                        System.out.println(e.getMessage());
+                        System.out.println("No agarra este metodo");
+                    }
                     break;
                 default:
                     System.out.println("Comando incorrecto");

@@ -1,6 +1,8 @@
 import java.util.Date;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+
 public class Vehiculo{
     //Atributos
     
@@ -154,13 +156,13 @@ public class Vehiculo{
     }
     
     public double cobrar(){
-        double precio = 309;
+        double precio = 0;
         return precio;
     }
     
     public static void exportarTXT()throws IOException{
-        FileWriter VehiculosParqueados = new FileWriter("C:/Users/");
-        VehiculosParqueados.write(Vehiculo.toStringVehiculos());
-        
+        PrintWriter salidaFile = new PrintWriter(new FileWriter("VehiculosParqueados.txt"));
+        salidaFile.println(Vehiculo.toStringVehiculos());
+        salidaFile.close();
     }
 }
