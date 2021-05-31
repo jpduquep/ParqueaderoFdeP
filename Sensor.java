@@ -1,3 +1,4 @@
+
 public class Sensor{
     //Atributos
     public static Sensor[][] sensores;
@@ -37,9 +38,10 @@ public class Sensor{
     public static String sensorLibre(){
         String sensoreslibresString = "";
         for(int piso = 0;piso<sensores.length;piso++){
+            sensoreslibresString += "\n[P" + (piso + 1) + "]";
             for(int sensor = 0;sensor<sensores[piso].length;sensor++){
                 if(sensores[piso][sensor].getEstado() == 0){
-                    sensoreslibresString = sensoreslibresString.concat("[P" + (piso + 1) + "] Espacio " + (sensor + 1) + ", ");
+                    sensoreslibresString += " Espacio " + (sensor + 1) + ", ";
                 }
             }
         }
@@ -49,7 +51,7 @@ public class Sensor{
     public static String sensoresEstados(){
         String sensoresString = "";
         for(int piso = 0;piso<sensores.length;piso++){
-            sensoresString += "[Piso " + (piso + 1) + "]";
+            sensoresString += "\n[Piso " + (piso + 1) + "]";
             for(int sensor = 0; sensor<sensores[piso].length;sensor++){
                 sensoresString += "[Sensor " + (sensor + 1) + "] esta " + sensores[piso][sensor].toString() + " ";
             }

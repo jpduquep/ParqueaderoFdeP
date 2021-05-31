@@ -1,8 +1,12 @@
+import java.util.Date;
+import java.io.FileWriter;
+import java.io.IOException;
 public class Vehiculo{
     //Atributos
     
     //Atributo estaticos (los mismos para todos en la clase)
     public static Vehiculo[][] vehiculos; //"Edificio" pisos = filas, espacio = columna
+    public static Date[][] fechas;
     public static int tamaño; //Total parqueaderos en el edificio
     public static int cantidad = 0; //Carros parqueados en el edificio
     
@@ -11,29 +15,34 @@ public class Vehiculo{
     private String marca;
     private String color;
     private int valorComercial;
+    private int tipoV;
+    private Date fecha;
     
     //Metodos Constructor
     public Vehiculo(){
         
     }
-    public Vehiculo(String placa, String marca, String color){
-        this (placa, marca, color, 30000000);
-    }
-    public Vehiculo(String placa, String marca, String color, int valor){
+    public Vehiculo(String placa, String marca, String color, int valor, int tipoV){
         this.placa = placa;
         this.marca = marca;
         this.color = color;
         this.valorComercial = valor;
+        this.tipoV = tipoV;
+        fecha = new Date();
         cantidad++;
     }
     
     //Metodos Set y Get
     
+    //fecha
+    public Date getFecha(){
+        return this.fecha;
+    }
     //PLACA
     public void setPlaca(String placa){
         this.placa = placa;
     }
-    public String Placa(){
+    public String getPlaca(){
         return this.placa;
     }
     //MARCA
@@ -60,15 +69,16 @@ public class Vehiculo{
     
     //Metodo toString (carro unico)
     public String toString(){
-        String toStr = "Placa: " + this.placa + ", Marca: " + this.marca + ", Color: " + this.color + ", Valor Comercial: " + this.valorComercial;
+        String toStr = "Placa: " + this.placa + ", Marca: " + this.marca + ", Color: " + this.color + ", Valor Comercial: " + this.valorComercial + ", Fecha y Hora de ingreso: " + this.fecha;;
         return toStr;
     }
+    
     //Metodo toString estatico (toString para todos los carros)
     public static String toStringVehiculos(){
         String vehiculosparqueados = "";
         int contador_actual = 0;
         for(int piso = 0; piso<vehiculos.length;piso++){
-            vehiculosparqueados += "[Piso " + (piso+1) + "]";
+            vehiculosparqueados += "\n[Piso " + (piso+1) + "]"; 
             contador_actual = 0;
             for(int parqueadero = 0; parqueadero<vehiculos[piso].length;parqueadero++){
                 if(vehiculos[piso][parqueadero]!=null){
@@ -95,11 +105,11 @@ public class Vehiculo{
                 if(vehiculos[piso][parqueadero]!=null){
                     String colorVActual = vehiculos[piso][parqueadero].getColor();
                     if((colorVActual.equalsIgnoreCase(colorx)) == true){
-                        if(contador == 0){
-                           toStringCoincidencias = "en [piso " + (piso+1) + "][parqueadero " + (parqueadero + 1) + "] con el carro " + vehiculos[piso][parqueadero].toString();
+                        if(contador == 0){ //
+                           toStringCoincidencias = "en \n[piso " + (piso+1) + "][parqueadero " + (parqueadero + 1) + "] con " + vehiculos[piso][parqueadero].toString();
                            contador++;
                         }else{
-                            toStringCoincidencias +=", [piso " + (piso+1) + "][parqueadero " + (parqueadero + 1) + "] con el carro " + vehiculos[piso][parqueadero].toString();
+                            toStringCoincidencias +="\n[piso " + (piso+1) + "][parqueadero " + (parqueadero + 1) + "] con " + vehiculos[piso][parqueadero].toString();
                             contador++;
                         }
                     }
@@ -137,9 +147,20 @@ public class Vehiculo{
             }
         }
         for(int x = 0;x<ordenadosValores.length;x++){
-            ordenados += "(" + ordenadosValores[x].toString() + "), ";
+            ordenados += "\n(" + ordenadosValores[x].toString() + "), ";
         }
         ordenados = "El orden de los carros de menor a mayor valor es: " + ordenados;
         return ordenados;
+    }
+    
+    public double cobrar(){
+        double precio = 309;
+        return precio;
+    }
+    
+    public static void exportarTXT()throws IOException{
+        FileWriter VehiculosParqueados = new FileWriter("C:/Users/");
+        VehiculosParqueados.write(Vehiculo.toStringVehiculos());
+        
     }
 }
